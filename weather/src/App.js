@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Kokeilu from './kokeilu'
-import Button from './button'
+
+import Search from './Search'
 import DailyWeather from './DailyWeather'
+import GetWeather from './GetWeather'
 
 const weatherData = [
   {date:'Keskiviikko 27.12', temp:'-2', description:'Sataa'},
@@ -12,24 +12,25 @@ const weatherData = [
 ]
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state={
+      city: 'helsinki'
+    }
+
+    this.getCity = this.getCity.bind(this)
+  }
+
+  getCity(city){
+    this.setState({city: city})
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Jeeeeeee</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-
-
-        {
-          weatherData.map( function(day) {
-          return <DailyWeather date={day.date} temp={day.temp} description={day.description}/>
-        })
-        }
-
+        <p>{this.state.city}</p>
+        <Search getCity={this.getCity}/>
+        <GetWeather city={this.state.city}/>
       </div>
     );
   }
