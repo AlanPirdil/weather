@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Kokeilu extends Component {
   render(){
     return(
-      <h1>Hello World</h1>
+      <h1>Moi</h1>
     );
   }
 }
